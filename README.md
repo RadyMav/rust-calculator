@@ -13,3 +13,4 @@ git clone https://github.com/RadyMav/rust-calculator.git
 cd rust-calculator
 cargo run
 ```
+Or you can just copu the code and paste it into VS Code or RustRover.
