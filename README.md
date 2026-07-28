@@ -1,6 +1,7 @@
 # Rust Calculator 🦀
 
 My first ptoject in rust🦀
+
 A simple command-line calculator written in Rust.
 
 ## 🚀 How to Run
