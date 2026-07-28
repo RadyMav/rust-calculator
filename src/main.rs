@@ -1,41 +1,45 @@
 use std::io;
-fn add(a: i64, b: i64) -> i64{
+
+fn addition(a: i64, b: i64) -> i64 {
     a + b
 }
+
+fn subtraction(a: i64, b: i64) -> i64 {
+    a- b
+}
+
 fn multiply(a: i64, b: i64) -> i64 {
     a * b
 }
 
-fn minus(a: i64, b: i64) -> i64{
-    a - b
-}
-fn decimal(a: i64, b: i64) -> i64 {
+fn divide(a: i64, b: i64) -> i64 {
     a / b
 }
+
+
+
 fn main() {
 
-
-
     println!("Enter first number: ");
-    let mut a = String::new();
-    io::stdin().read_line(&mut a).expect("Failed to read line");
-    let a: i64 = a.trim().parse().expect("Please type a number!");
+    let mut a: String = String::new();
+    io::stdin().read_line(&mut a).expect("Failde to read lline");
+    let a: i64 = a.trim().parse().expect("Enter a number!");
 
     println!("Enter second number: ");
-    let mut b = String::new();
+    let mut b: String = String::new();
     io::stdin().read_line(&mut b).expect("Failed to read line");
-    let b: i64 = b.trim().parse().expect("Please type a number!");
+    let b: i64 = b.trim().parse().expect("Enter a number!");
 
 
+    let result_a: i64 = addition(a, b);
+    let result_s: i64 = subtraction(a, b);
+    let result_m: i64 = multiply(a, b);
+    let result_d: i64 = divide(a, b);
 
-    let result: i64 = add(a, b);
-    let results: i64 = minus(a, b);
-    let resultm: i64 = multiply(a, b);
-    let resultd: i64 = decimal(a, b);
+    println!("{} + {} = {}", a, b, result_a);
+    println!("{} - {} = {}", a, b, result_s);
+    println!("{} * {} = {}", a, b, result_m);
+    println!("{} / {} = {}", a, b, result_d);
 
-    println!("{} + {} = {}", a, b,  result);
-    println!("{} - {} = {}", a, b, results);
-    println!("{} * {} = {}", a, b, resultm);
-    println!("{} / {} = {}", a, b, resultd)
 
 }
