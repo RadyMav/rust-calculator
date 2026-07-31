@@ -5,7 +5,7 @@ fn addition(a: i64, b: i64) -> i64 {
 }
 
 fn subtraction(a: i64, b: i64) -> i64 {
-    a- b
+    a - b
 }
 
 fn multiply(a: i64, b: i64) -> i64 {
@@ -15,7 +15,6 @@ fn multiply(a: i64, b: i64) -> i64 {
 fn divide(a: i64, b: i64) -> f64 {
     a as f64 / b as f64
 }
-
 
 
 fn main() {
@@ -37,7 +36,7 @@ fn main() {
         println!("- is subtraction");
         println!("* is multiply");
         println!("/ is divide");
-        println!("' is exit");
+        println!("q is exit");
 
         println!("Enter the operation: ");
         let mut op: String = String::new();
@@ -54,7 +53,7 @@ fn main() {
             _ => println!("Result: No operation"),
         }
 
-        if op == "'" {
+        if op == "q" {
             break
         }
     }
