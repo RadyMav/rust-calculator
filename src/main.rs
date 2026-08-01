@@ -32,29 +32,44 @@ fn main() {
         let b: i64 = b.trim().parse().expect("Enter a number!");
 
 
-        println!("+ is addition");
-        println!("- is subtraction");
-        println!("* is multiply");
-        println!("/ is divide");
-        println!("q is exit");
+        println!("A is addition");
+        println!("S is subtraction");
+        println!("M is multiply");
+        println!("D is divide");
+        println!("Q is exit");
+
+
+        enum Operations {
+            Add,
+            Subtract,
+            Multiply,
+            Divide,
+            Exit,
+        }
 
         println!("Enter the operation: ");
-        let mut op: String = String::new();
-        io::stdin().read_line(&mut op).expect("Failed to read line");
-        let op = op.trim();
+        let mut input: String = String::new();
+        io::stdin().read_line(&mut input).expect("Failed to read line");
+        let input = input.trim();
 
 
+        let op = match input {
+            "A" => Operations::Add,
+            "S" => Operations::Subtract,
+            "M" => Operations::Multiply,
+            "D" => Operations::Divide,
+            "Q" => Operations::Exit,
+            _ => panic!("Unknown operation!"),
+        };
 
         match op {
-            "+" => println!("{} + {} = {}", a, b, addition(a, b)),
-            "-" => println!("{} - {} = {}", a, b, subtraction(a, b)),
-            "*" => println!("{} * {} = {}", a, b, multiply(a, b)),
-            "/" => println!("{} / {} = {}", a, b, divide(a, b)),
-            _ => println!("Result: No operation"),
-        }
+            Operations::Add => println!("{} + {} = {}", a, b, addition(a, b)),
+            Operations::Subtract => println!("{} - {} = {}", a, b, subtraction(a, b)),
+            Operations::Multiply => println!("{} * {} = {}", a, b, multiply(a, b)),
+            Operations::Divide => println!("{} / {} = {}", a, b, divide(a, b)),
+            Operations::Exit => break,
+        };
 
-        if op == "q" {
-            break
-        }
+
     }
 }
