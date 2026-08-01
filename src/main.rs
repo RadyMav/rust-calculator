@@ -16,28 +16,15 @@ fn divide(a: i64, b: i64) -> f64 {
     a as f64 / b as f64
 }
 
-
 fn main() {
 
     loop {
-
-        println!("Enter first number: ");
-        let mut a: String = String::new();
-        io::stdin().read_line(&mut a).expect("Failde to read lline");
-        let a: i64 = a.trim().parse().expect("Enter a number!");
-
-        println!("Enter second number: ");
-        let mut b: String = String::new();
-        io::stdin().read_line(&mut b).expect("Failed to read line");
-        let b: i64 = b.trim().parse().expect("Enter a number!");
-
 
         println!("A is addition");
         println!("S is subtraction");
         println!("M is multiply");
         println!("D is divide");
         println!("Q is exit");
-
 
         enum Operations {
             Add,
@@ -62,6 +49,27 @@ fn main() {
             _ => panic!("Unknown operation!"),
         };
 
+        if let Operations::Exit = op {
+            break;
+        }
+
+        println!("Enter first number: ");
+        let mut a: String = String::new();
+        io::stdin().read_line(&mut a).expect("Failde to read lline");
+        let a: i64 = a.trim().parse().expect("Enter a number!");
+
+        println!("Enter second number: ");
+        let mut b: String = String::new();
+        io::stdin().read_line(&mut b).expect("Failed to read line");
+        let b: i64 = b.trim().parse().expect("Enter a number!");
+
+
+        println!("A is addition");
+        println!("S is subtraction");
+        println!("M is multiply");
+        println!("D is divide");
+        println!("Q is exit");
+
         match op {
             Operations::Add => println!("{} + {} = {}", a, b, addition(a, b)),
             Operations::Subtract => println!("{} - {} = {}", a, b, subtraction(a, b)),
@@ -69,7 +77,6 @@ fn main() {
             Operations::Divide => println!("{} / {} = {}", a, b, divide(a, b)),
             Operations::Exit => break,
         };
-
 
     }
 }
