@@ -16,6 +16,14 @@ fn divide(a: i64, b: i64) -> f64 {
     a as f64 / b as f64
 }
 
+enum Operations {
+    Add,
+    Subtract,
+    Multiply,
+    Divide,
+    Exit,
+}
+
 fn main() {
 
     loop {
@@ -26,21 +34,15 @@ fn main() {
         println!("D is divide");
         println!("Q is exit");
 
-        enum Operations {
-            Add,
-            Subtract,
-            Multiply,
-            Divide,
-            Exit,
-        }
 
         println!("Enter the operation: ");
         let mut input: String = String::new();
         io::stdin().read_line(&mut input).expect("Failed to read line");
         let input = input.trim();
+        let input = input.to_uppercase();
 
 
-        let op = match input {
+        let op = match input.as_str() {
             "A" => Operations::Add,
             "S" => Operations::Subtract,
             "M" => Operations::Multiply,
@@ -62,13 +64,6 @@ fn main() {
         let mut b: String = String::new();
         io::stdin().read_line(&mut b).expect("Failed to read line");
         let b: i64 = b.trim().parse().expect("Enter a number!");
-
-
-        println!("A is addition");
-        println!("S is subtraction");
-        println!("M is multiply");
-        println!("D is divide");
-        println!("Q is exit");
 
         match op {
             Operations::Add => println!("{} + {} = {}", a, b, addition(a, b)),
