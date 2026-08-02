@@ -48,7 +48,10 @@ fn main() {
             "M" => Operations::Multiply,
             "D" => Operations::Divide,
             "Q" => Operations::Exit,
-            _ => panic!("Unknown operation!"),
+            _ => {
+                println!("Unknown operation");
+                continue;
+            },
         };
 
         if let Operations::Exit = op {
