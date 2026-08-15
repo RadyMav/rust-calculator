@@ -16,12 +16,22 @@ fn divide(a: i64, b: i64) -> f64 {
     a as f64 / b as f64
 }
 
+fn modulo(a: i64, b: i64) -> i64 {
+    a % b
+}
+
+fn power(a: i64, b: i64) -> i64 {
+    a.pow(b as u32)
+}
+
 enum Operations {
     Add,
     Subtract,
     Multiply,
     Divide,
     Exit,
+    Modulo,
+    Power,
 }
 
 fn main() {
@@ -33,6 +43,8 @@ fn main() {
         println!("M is multiply");
         println!("D is divide");
         println!("Q is exit");
+        println!("R is modulo");
+        println!("P is power");
 
 
         println!("Enter the operation: ");
@@ -47,6 +59,8 @@ fn main() {
             "S" => Operations::Subtract,
             "M" => Operations::Multiply,
             "D" => Operations::Divide,
+            "R" => Operations::Modulo,
+            "P" => Operations::Power,
             "Q" => Operations::Exit,
             _ => {
                 println!("Unknown operation");
@@ -72,7 +86,13 @@ fn main() {
             Operations::Add => println!("{} + {} = {}", a, b, addition(a, b)),
             Operations::Subtract => println!("{} - {} = {}", a, b, subtraction(a, b)),
             Operations::Multiply => println!("{} * {} = {}", a, b, multiply(a, b)),
+            Operations::Divide if b == 0 => {
+                println!("Division by zero is not available!");
+                continue;
+            }
             Operations::Divide => println!("{} / {} = {}", a, b, divide(a, b)),
+            Operations::Modulo => println!("{} % {} = {}", a, b, modulo(a, b)),
+            Operations::Power => println!("{} ^ {} = {}", a, b, power(a, b)),
             Operations::Exit => break,
         };
 
