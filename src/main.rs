@@ -24,6 +24,20 @@ fn power(a: i64, b: i64) -> i64 {
     a.pow(b as u32)
 }
 
+fn read_number(prompt: &str) -> i64 {
+    loop {
+        println!("{} ", prompt);
+        let mut input = String::new();
+        io::stdin().read_line(&mut input).expect("failed to read line");
+
+        match input.trim().parse::<i64>() {
+            Ok(num) => return num,
+            Err(_) => println!("Please enter a number!"),
+
+        }
+    }
+}
+
 enum Operations {
     Add,
     Subtract,
@@ -72,15 +86,9 @@ fn main() {
             break;
         }
 
-        println!("Enter first number: ");
-        let mut a: String = String::new();
-        io::stdin().read_line(&mut a).expect("Failde to read lline");
-        let a: i64 = a.trim().parse().expect("Enter a number!");
+        let a:i64 = read_number("Enter first number");
+        let b:i64 = read_number("Enter second number");
 
-        println!("Enter second number: ");
-        let mut b: String = String::new();
-        io::stdin().read_line(&mut b).expect("Failed to read line");
-        let b: i64 = b.trim().parse().expect("Enter a number!");
 
         match op {
             Operations::Add => println!("{} + {} = {}", a, b, addition(a, b)),
@@ -91,6 +99,9 @@ fn main() {
                 continue;
             }
             Operations::Divide => println!("{} / {} = {}", a, b, divide(a, b)),
+            Operations:: Modulo if b == 0 => {
+                println!("Division by zero is not available!");
+            }
             Operations::Modulo => println!("{} % {} = {}", a, b, modulo(a, b)),
             Operations::Power => println!("{} ^ {} = {}", a, b, power(a, b)),
             Operations::Exit => break,
