@@ -29,9 +29,9 @@ enum Operations {
     Subtract,
     Multiply,
     Divide,
-    Exit,
     Modulo,
     Power,
+    Exit,
 }
 
 fn main() {
@@ -42,9 +42,9 @@ fn main() {
         println!("S is subtraction");
         println!("M is multiply");
         println!("D is divide");
-        println!("Q is exit");
         println!("R is modulo");
         println!("P is power");
+        println!("Q is exit");
 
 
         println!("Enter the operation: ");
