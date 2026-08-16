@@ -101,6 +101,7 @@ fn main() {
             Operations::Divide => println!("{} / {} = {}", a, b, divide(a, b)),
             Operations:: Modulo if b == 0 => {
                 println!("Division by zero is not available!");
+                continue;
             }
             Operations::Modulo => println!("{} % {} = {}", a, b, modulo(a, b)),
             Operations::Power => println!("{} ^ {} = {}", a, b, power(a, b)),
